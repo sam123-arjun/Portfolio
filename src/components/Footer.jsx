@@ -1,61 +1,89 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 const Footer = () => {
-    return (
-      <footer className="bg-slate-900 text-white pt-20 pb-10 relative overflow-hidden">
-        {/* Background Decoration */}
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl -mr-24 -mb-24"></div>
+  return (
+    <footer className="bg-[#090a0b] text-zinc-400 pt-16 pb-12 border-t border-zinc-850">
+      <div className="max-w-6xl mx-auto px-6 space-y-12">
+        {/* Top Tier: Identity & Direct Channels */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-10 border-b border-zinc-850">
+          <div className="space-y-2">
+            <h2 className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight">
+              SAMEER ARJUN <span className="text-amber-400 font-mono text-xs font-normal ml-2">{'// Developer & Builder'}</span>
+            </h2>
 
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-20 border-b border-white/10 pb-20">
-            <div className="text-center md:text-left">
-              <h2 className="text-3xl font-bold tracking-tight mb-4">
-                Let's Build Something <span className="text-primary-400 font-serif italic font-medium">Extraordinary</span>
-              </h2>
-              <p className="text-slate-400 text-lg max-w-md">
-                Combining technical excellence with creative problem solving to deliver top-tier software.
-              </p>
-            </div>
-
-            <div className="flex gap-6">
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all hover:scale-110">
-                <Github size={24} />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all hover:scale-110">
-                <Linkedin size={24} />
-              </a>
-              <a href="mailto:sameer@example.com" className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all hover:scale-110">
-                <Mail size={24} />
-              </a>
-            </div>
+            <p className="text-xs sm:text-sm text-zinc-400 max-w-md">
+              Final-year IT Engineering student at VCET (University of Mumbai) building full-stack web applications and AI/ML solutions.
+            </p>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="text-slate-500 text-sm font-medium tracking-wide">
-              © 2026 SAMEER ARJUN. ALL RIGHTS RESERVED.
-            </div>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://github.com/sam123-arjun"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub Profile"
+              className="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-amber-400 hover:border-zinc-700 transition-all"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn Profile"
+              className="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-amber-400 hover:border-zinc-700 transition-all"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href="mailto:arjunsameer59@gmail.com"
+              aria-label="Send Email"
+              className="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-amber-400 hover:border-zinc-700 transition-all"
+            >
+              <Mail size={18} />
+            </a>
+          </div>
+        </div>
 
-            <div className="flex gap-8 text-slate-400 text-sm font-semibold tracking-widest uppercase">
-              <Link to="about" smooth={true} duration={500} className="hover:text-primary-400 cursor-pointer">About</Link>
-              <Link to="projects" smooth={true} duration={500} className="hover:text-primary-400 cursor-pointer">Projects</Link>
-              <Link to="contact" smooth={true} duration={500} className="hover:text-primary-400 cursor-pointer">Contact</Link>
-            </div>
+        {/* Bottom Tier: Navigation & Copyright */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-zinc-500">
+          <nav className="flex flex-wrap items-center gap-6" aria-label="Footer Navigation">
+            <Link to="projects" smooth={true} duration={400} offset={-80} className="hover:text-zinc-200 transition-colors cursor-pointer">
+              Work
+            </Link>
+            <Link to="about" smooth={true} duration={400} offset={-80} className="hover:text-zinc-200 transition-colors cursor-pointer">
+              About
+            </Link>
+            <Link to="skills" smooth={true} duration={400} offset={-80} className="hover:text-zinc-200 transition-colors cursor-pointer">
+              Skills
+            </Link>
+            <Link to="education" smooth={true} duration={400} offset={-80} className="hover:text-zinc-200 transition-colors cursor-pointer">
+              Education
+            </Link>
+            <Link to="contact" smooth={true} duration={400} offset={-80} className="hover:text-zinc-200 transition-colors cursor-pointer">
+              Contact
+            </Link>
+          </nav>
 
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-[11px] text-zinc-500">
+              © {new Date().getFullYear()} Sameer Arjun. Built with React & Tailwind.
+            </span>
             <Link
               to="hero"
               smooth={true}
-              duration={500}
-              className="bg-primary-600 p-4 rounded-2xl hover:bg-primary-700 transition-all shadow-xl shadow-primary-900/40 cursor-pointer group"
+              duration={450}
+              aria-label="Back to top"
+              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-amber-400 hover:border-zinc-700 transition-all cursor-pointer group"
             >
-              <ArrowUp size={20} className="group-hover:-translate-y-1 transition-transform" />
+              <ArrowUp size={15} className="group-hover:-translate-y-0.5 transition-transform" />
             </Link>
           </div>
         </div>
-      </footer>
-    );
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

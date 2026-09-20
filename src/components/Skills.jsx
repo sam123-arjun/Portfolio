@@ -1,99 +1,117 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Code2, Globe, Cpu, Database, ChevronRight, Terminal } from 'lucide-react';
+import { Terminal, Layout, Server, Database, Cpu, Wrench, Award, CheckCircle } from 'lucide-react';
 
 const Skills = () => {
-  const skillCategories = [
+  const skillGroups = [
     {
-      title: "Programming",
-      icon: <Terminal className="w-6 h-6 text-blue-500" />,
-      skills: [
-        { name: "Python", level: 90 },
-        { name: "C++", level: 75 },
-        { name: "JavaScript", level: 65 }
-      ]
+      domain: 'Languages',
+      icon: <Terminal size={17} className="text-amber-400" />,
+      items: ['Java', 'Python', 'JavaScript', 'C']
     },
     {
-      title: "Web Development",
-      icon: <Globe className="w-6 h-6 text-emerald-500" />,
-      skills: [
-        { name: "Flask", level: 85 },
-        { name: "React", level: 70 },
-        { name: "Tailwind CSS", level: 80 }
-      ]
+      domain: 'Frontend',
+      icon: <Layout size={17} className="text-amber-400" />,
+      items: ['HTML', 'CSS', 'React']
     },
     {
-      title: "AI & Data Science",
-      icon: <Cpu className="w-6 h-6 text-purple-500" />,
-      skills: [
-        { name: "Machine Learning", level: 80 },
-        { name: "Deep Learning", level: 75 },
-        { name: "NLP", level: 70 }
-      ]
+      domain: 'Backend',
+      icon: <Server size={17} className="text-amber-400" />,
+      items: ['Node.js', 'FastAPI', 'REST APIs']
     },
     {
-      title: "Backend & DevTools",
-      icon: <Database className="w-6 h-6 text-orange-500" />,
-      skills: [
-        { name: "PostgreSQL", level: 75 },
-        { name: "Docker", level: 60 },
-        { name: "Git", level: 85 }
-      ]
+      domain: 'Databases',
+      icon: <Database size={17} className="text-amber-400" />,
+      items: ['MySQL', 'MongoDB']
+    },
+    {
+      domain: 'AI / ML',
+      icon: <Cpu size={17} className="text-amber-400" />,
+      items: ['NLP', 'BiLSTM', 'TensorFlow']
+    },
+    {
+      domain: 'Tools',
+      icon: <Wrench size={17} className="text-amber-400" />,
+      items: ['Git', 'GitHub', 'Vercel']
     }
   ];
 
   return (
-    <section id="skills" className="section-padding bg-white">
-      <div className="container mx-auto">
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.6 }}
-           viewport={{ once: true }}
-           className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900">Technical Skills</h2>
-          <div className="title-underline"></div>
-        </motion.div>
+    <section id="skills" className="section-padding border-t border-zinc-850">
+      <div className="space-y-12">
+        {/* Section Header */}
+        <div className="space-y-2">
+          <span className="section-tag">03 // Technical Stack</span>
+          <h2 className="section-title">Skills & Technologies</h2>
+          <p className="section-subtitle">
+            Technologies I have actively used across my projects, coursework, and personal builds.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillCategories.map((category, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="glass p-8 rounded-3xl group hover:shadow-2xl hover:shadow-primary-100/50 transition-all border-slate-100"
+        {/* Editorial Skills Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillGroups.map((group, idx) => (
+            <div
+              key={group.domain}
+              className="editorial-card p-6 space-y-4 hover:border-zinc-700 transition-all"
             >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="p-3 bg-white rounded-2xl shadow-sm group-hover:bg-primary-50 transition-colors">
-                  {category.icon}
+              <div className="flex items-center justify-between pb-3 border-b border-zinc-800/80">
+                <div className="flex items-center gap-2.5">
+                  {group.icon}
+                  <h3 className="font-display font-bold text-white text-base">
+                    {group.domain}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-bold text-slate-800">{category.title}</h3>
+                <span className="font-mono text-xs text-zinc-400 font-semibold">
+                  0{idx + 1}
+                </span>
               </div>
 
-              <div className="space-y-6">
-                {category.skills.map((skill, sIdx) => (
-                  <div key={sIdx} className="space-y-2">
-                    <div className="flex justify-between items-center text-sm font-semibold">
-                      <span className="text-slate-700">{skill.name}</span>
-                      <span className="text-primary-600">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: 0.5 + (sIdx * 0.1) }}
-                        viewport={{ once: true }}
-                        className="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full"
-                      />
-                    </div>
-                  </div>
+              <div className="flex flex-wrap gap-2 pt-1">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="font-mono text-xs px-3 py-1.5 rounded-md bg-zinc-900/90 text-zinc-200 border border-zinc-800 hover:border-amber-400/40 hover:text-amber-400 transition-colors"
+                  >
+                    {item}
+                  </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
+        </div>
+
+        {/* Certifications Banner */}
+        <div className="editorial-card p-6 sm:p-7 border border-zinc-800/90 bg-gradient-to-r from-zinc-950 via-[#121316] to-zinc-950 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="p-3 rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-400 shrink-0">
+              <Award size={24} />
+            </div>
+            <div className="space-y-1">
+              <div className="font-mono text-xs uppercase tracking-widest text-amber-400 font-semibold">
+                Verified Certification
+              </div>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white">
+                HackerRank — SQL Certification
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-400 max-w-xl">
+                Demonstrated proficiency across complex joins, subqueries, aggregation, window functions, and relational schema optimization.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300">
+              <CheckCircle size={13} className="text-emerald-400" />
+              Basic
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300">
+              <CheckCircle size={13} className="text-emerald-400" />
+              Intermediate
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-amber-400/30 text-amber-300 font-semibold">
+              <CheckCircle size={13} className="text-amber-400" />
+              Advanced
+            </span>
+          </div>
         </div>
       </div>
     </section>
@@ -101,3 +119,5 @@ const Skills = () => {
 };
 
 export default Skills;
+
+

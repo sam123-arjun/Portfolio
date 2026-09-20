@@ -1,8 +1,8 @@
-import React from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 import { motion, useScroll, useSpring } from 'framer-motion';
+
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -13,22 +13,24 @@ function App() {
   });
 
   return (
-    <div className="relative font-sans text-slate-900 bg-slate-50 selection:bg-primary-200 selection:text-primary-900">
+    <div className="relative font-sans text-zinc-100 bg-[#0c0d0e] selection:bg-amber-400 selection:text-zinc-950 min-h-screen">
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary-600 origin-left z-[100]"
+        className="fixed top-0 left-0 right-0 h-0.5 bg-amber-400 origin-left z-[100]"
         style={{ scaleX }}
       />
 
+
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <Home />
       </main>
 
       <Footer />
     </div>
   );
+
 }
 
 export default App;
